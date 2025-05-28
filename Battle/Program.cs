@@ -2,6 +2,7 @@
 using NAudio.Wave.SampleProviders;
 using Spectre.Console;
 using System;
+using System.Drawing;
 using System.Threading;
 
 
@@ -29,6 +30,7 @@ class UndertaleAsciiMenu
             Thread.Sleep(2000);
         }
         DrawStaticHeader();
+        MenuPainting4();
         MenuPainting3();
         MenuPainting2();
         MenuPainting();
@@ -97,7 +99,7 @@ class UndertaleAsciiMenu
         int optionY = 30;
         int spacing = 12;
         int maxLineLength = Math.Max(continueAscii[0].Length, resetAscii[0].Length);
-        new Style(foreground: Color.DarkOrange);
+
         for (int i = 0; i < 3; i++)
         {
             // Borrar líneas anteriores (limpieza)
@@ -106,13 +108,13 @@ class UndertaleAsciiMenu
 
             // Imprimir Continue
             Console.SetCursorPosition(centerX - maxLineLength - spacing, optionY + i);
-            Console.ForegroundColor = selectedIndex == 0 ? ConsoleColor.DarkYellow : ConsoleColor.White;
-            Console.Write(continueAscii[i]);
+            string color = selectedIndex == 0 ? "#ffcc00" : "white";
+            AnsiConsole.Markup($"[{color}]{continueAscii[i]}[/]");
 
             // Imprimir Reset
             Console.SetCursorPosition(centerX + spacing, optionY + i);
-            Console.ForegroundColor = selectedIndex == 1 ? Color.DarkOrange : ConsoleColor.White;
-            Console.Write(resetAscii[i]);
+            string color2 = selectedIndex == 1 ? "#ffcc00" : "white";
+            AnsiConsole.Markup($"[{color2}]{resetAscii[i]}[/]");
         }
 
         Console.ResetColor();
@@ -132,12 +134,11 @@ class UndertaleAsciiMenu
             "███████████████████████",
             
         };
-
+        string color2 = "#10803d";
         foreach (string line in asciiArt)
         {
             Console.SetCursorPosition(centerX - line.Length / 2, artStartY++);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(line);
+            AnsiConsole.Markup($"[{color2}]{line}[/]");
         }
     }
 
@@ -163,12 +164,11 @@ class UndertaleAsciiMenu
             "█████████████████████████",
             "█████████████████"
         };
-
+        string color2 = "#9c98b1"; 
         foreach (string line in asciiArt)
         {
             Console.SetCursorPosition(centerX - line.Length / 2, artStartY++);
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine(line);
+            AnsiConsole.Markup($"[{color2}]{line}[/]");
         }
 
     }
@@ -194,12 +194,41 @@ class UndertaleAsciiMenu
             "█████████████████████████████████████████████████████",
             "█████████████████████████████████████████████"
         };
-
+        string color2 = "#4d4b60";
         foreach (string line in asciiArt)
         {
             Console.SetCursorPosition(centerX - line.Length / 2, artStartY++);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(line);
+            AnsiConsole.Markup($"[{color2}]{line}[/]");
+        }
+
+    }
+    static void MenuPainting4()
+    {
+        int centerX = Console.WindowWidth / 2;
+        int artStartY = 43;
+        
+        string[] asciiArt =
+        {
+            "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
+            "███████████████████████████████████████████████████████████████████████████████████████",
+            "███████████████████████████████████████████████████████████████████████████████████████████",
+            "█████████████████████████████████████████████████████████████████████████████████████████████",
+            "███████████████████████████████████████████████████████████████████████████████████████████████",
+            "█████████████████████████████████████████████████████████████████████████████████████████████████",
+            "█████████████████████████████████████████████████████████████████████████████████████████████████",
+            "███████████████████████████████████████████████████████████████████████████████████████████████",
+            "█████████████████████████████████████████████████████████████████████████████████████████████",
+            "███████████████████████████████████████████████████████████████████████████████████████████",
+            "███████████████████████████████████████████████████████████████████████████████████████",
+            "█████████████████████████████████████████████████████████████████████████████████",
+            "█████████████████████████████████████████████████████████████████████████",
+            "█████████████████████████████████████████████████████████████████"
+        };
+        string color2 = "#2e2d38";
+        foreach (string line in asciiArt)
+        {
+            Console.SetCursorPosition(centerX - line.Length / 2, artStartY++);
+            AnsiConsole.Markup($"[{color2}]{line}[/]");
         }
 
     }
@@ -248,4 +277,5 @@ class UndertaleAsciiMenu
         Console.SetCursorPosition(0, messageY);
         Console.Write(new string(' ', Console.WindowWidth));
     }
+
 }
