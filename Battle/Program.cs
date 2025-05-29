@@ -30,6 +30,7 @@ class UndertaleAsciiMenu
             Thread.Sleep(2000);
         }
         DrawStaticHeader();
+        Door();
         MenuPainting4();
         MenuPainting3();
         MenuPainting2();
@@ -118,6 +119,35 @@ class UndertaleAsciiMenu
         }
 
         Console.ResetColor();
+    }
+    static void Door()
+    {
+        int centerX = Console.WindowWidth / 2;
+        int artStartY = 0;
+                
+        string[] asciiArt =
+        {
+            "           █ █ █ █ █                                █ █ █ █ █           ",
+            "           █ █ █ █ █                                █ █ █   █           ",
+            "           █ █ █ █ █                                █ █ █ █ █           ",
+            "           █ █ █ █ █                                █ █ █ █ █           ",
+            "██████████ █ █   █ █                                █ █ █ █ █ ██████████",
+            "  ▄▄ ▄     █ █   █ █                                █ █ █   █     ▄▄ ▄  ",
+            "           █ █   █ █                                █ █ █   █           ",
+            "  ██ █     █ █   █ █                                █ █ █   █     ██ █  ",
+            "  ██ █     ▄▄▄▄▄▄▄ █                                █ ▄▄▄▄▄▄▄     ██ █  ",
+            "  ██ █      ▀▀▀▀▀  ▀                                ▀  ▀▀▀▀▀      ██ █  ",
+            "  ▀▀ ▀   ▄██▄▀▀▀▄██▄  ▄▄  ▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄     ▄██▄▀▀▀▄██▄   ▀▀ ▀  ",
+            "  ▀▀ ▀   ▀▀▀▀▀▀▀▀▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▀▀▀▀▀▀▀▀▀▀   ▀▀ ▀  ",                          
+            "▄██▀▀▀▀    ▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄    ▀▀▀▀██▄",
+
+        };
+        string color2 = "#643060";
+        foreach (string line in asciiArt)
+        {
+            Console.SetCursorPosition(centerX - line.Length / 2, artStartY++);
+            AnsiConsole.Markup($"[{color2}]{line}[/]");
+        }
     }
     static void MenuPainting()
     {
